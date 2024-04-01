@@ -15,7 +15,7 @@
 <meta name="author" content="" />
 <title>IotBay Web Application</title>
 <!-- Favicon-->
-<link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
+<link rel="icon" type="image/x-icon" href="assets/iot-bay.ico"/>
 <!-- Font Awesome icons (free version)-->
 <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
 	crossorigin="anonymous"></script>

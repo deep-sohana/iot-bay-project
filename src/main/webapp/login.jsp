@@ -12,6 +12,7 @@
 
 <!-- Main css -->
 <link rel="stylesheet" href="css/style.css">
+<link rel="icon" type="image/x-icon" href="assets/iot-bay.ico"/>
 </head>
 <body>
 

@@ -29,6 +29,7 @@
 						</figure>
 						<a href="registration.jsp" class="signup-image-link">Create an
 							account</a>
+						<a href="index.jsp?continueAsGuest=true" class="signup-image-link">Continue as guest</a>
 					</div>
 
 					<div class="signin-form">

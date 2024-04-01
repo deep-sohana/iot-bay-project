@@ -1,7 +1,19 @@
-<%
+<%-- <%
 	if(session.getAttribute("name") == null){
 		response.sendRedirect("login.jsp");
 	}
+%> --%>
+<%
+    if(session.getAttribute("name") == null){
+        String continueAsGuest = request.getParameter("continueAsGuest");
+        if (continueAsGuest != null && continueAsGuest.equals("true")) {
+            // Allow guest access
+        } else {
+            // Redirect to login page if user is not logged in
+            response.sendRedirect("login.jsp");
+            return; // Stop further execution of the JSP
+        }
+    }
 %>
 
 
@@ -76,7 +88,7 @@
 					<li class="nav-item mx-0 mx-lg-1"><a
 						class="nav-link py-3 px-0 px-lg-3 rounded" href="logout">Logout</a></li>
 						<li class="nav-item mx-0 mx-lg-1 bg-danger"><a
-						class="nav-link py-3 px-0 px-lg-3 rounded" href="logout"><%=session.getAttribute("name") %></a></li>
+						class="nav-link py-3 px-0 px-lg-3 rounded" href="logout"><%= session.getAttribute("name") != null ? session.getAttribute("name") : "Guest" %></a></li>
 					
 				</ul>
 			</div>

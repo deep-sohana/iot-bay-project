@@ -1,4 +1,4 @@
-<%
+<%-- <%
     if(session.getAttribute("name") == null){
         String continueAsGuest = request.getParameter("continueAsGuest");
         if (continueAsGuest != null && continueAsGuest.equals("true")) {
@@ -10,7 +10,7 @@
             return; // Stop further execution of the JSP
         }
     }
-%>
+%> --%>
 
 <!DOCTYPE html>
 <html lang="en">

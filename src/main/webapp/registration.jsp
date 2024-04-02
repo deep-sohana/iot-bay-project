@@ -109,6 +109,9 @@
 	if(status == "emptyPassword"){
 		swal("Unsuccessful!","Please enter a password.", "error");
 	}
+	if(status == "passNoMatch"){
+		swal("Unsuccessful!","Passwords do not match.", "error");
+	}	
 </script>
 
 

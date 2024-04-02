@@ -32,30 +32,30 @@
 							<div class="form-group">
 								<label for="fname"><i
 									class="zmdi zmdi-account material-icons-name"></i></label> <input
-									type="text" name="fname" id="fname" placeholder="First Name" />
+									type="text" name="fname" id="fname" placeholder="First Name" required="required"/>
 							</div>
 							<div class="form-group">
 								<label for="lname"><i
 									class="zmdi zmdi-account material-icons-name"></i></label> <input
-									type="text" name="lname" id="lname" placeholder="Last Name" />
+									type="text" name="lname" id="lname" placeholder="Last Name" required="required"/>
 							</div>
 							<div class="form-group">
 								<label for="email"><i class="zmdi zmdi-email"></i></label> <input
-									type="email" name="email" id="email" placeholder="Your Email" />
+									type="email" name="email" id="email" placeholder="Your Email" required="required"/>
 							</div>
 							<div class="form-group">
 								<label for="contact"><i class="zmdi zmdi-phone"></i></label>
 								<input type="text" name="phone" id="phone"
-									placeholder="Phone no" />
+									placeholder="Phone no" required="required"/>
 							</div>							
 							<div class="form-group">
 								<label for="pass"><i class="zmdi zmdi-lock"></i></label> <input
-									type="password" name="password" id="password" placeholder="Password" />
+									type="password" name="password" id="password" placeholder="Password" required="required"/>
 							</div>
 							<div class="form-group">
 								<label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
 								<input type="password" name="re_pass" id="re_pass"
-									placeholder="Repeat your password" />
+									placeholder="Repeat your password" required="required"/>
 							</div>
 							<div class="form-group">
 								<input type="checkbox" name="agree-term" id="agree-term"

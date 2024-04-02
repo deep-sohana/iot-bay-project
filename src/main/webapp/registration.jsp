@@ -94,6 +94,21 @@
 	if(status == "success"){
 		swal("Congratulations!","Account successfully registered!", "success");
 	}
+	if(status == "emptyFname"){
+		swal("Unsuccessful!","Please enter a first name.", "error");
+	}
+	if(status == "emptyLname"){
+		swal("Unsuccessful!","Please enter a last name.", "error");
+	}
+	if(status == "emptyEmail"){
+		swal("Unsuccessful!","Please enter an email.", "error");
+	}
+	if(status == "invalidPhone"){
+		swal("Unsuccessful!","Please enter a valid phone number.", "error");
+	}
+	if(status == "emptyPassword"){
+		swal("Unsuccessful!","Please enter a password.", "error");
+	}
 </script>
 
 

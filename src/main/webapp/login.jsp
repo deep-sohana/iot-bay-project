@@ -41,12 +41,12 @@
 								<label for="username"><i
 									class="zmdi zmdi-account material-icons-name"></i></label> <input
 									type="text" name="email" id="email"
-									placeholder="Email" />
+									placeholder="Email" required="required"/>
 							</div>
 							<div class="form-group">
 								<label for="password"><i class="zmdi zmdi-lock"></i></label> <input
 									type="password" name="password" id="password"
-									placeholder="Password" />
+									placeholder="Password" required="required"/>
 							</div>
 							<div class="form-group">
 								<input type="checkbox" name="remember-me" id="remember-me"
@@ -87,6 +87,12 @@
 	var status = document.getElementById("status").value;
 	if(status == "failed"){
 		swal("Unsuccessful!","Incorrect email or password, please try again.", "error");
+	}
+	else if(status == "emptyEmail"){
+		swal("Unsuccessful!","Please enter email.", "error");
+	}
+	else if(status == "emptyPassword"){
+		swal("Unsuccessful!","Please enter password.", "error");
 	}
 </script>
 

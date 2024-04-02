@@ -28,6 +28,19 @@ public class Login extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		
+//		if email of password is empty, do not forward request
+		if(email == null || email.equals("")) {
+			request.setAttribute("status", "emptyEmail");
+			dispatcher = request.getRequestDispatcher("login.jsp");	
+			dispatcher.forward(request,response);
+		}
+		else if (password == null || password.equals("")) {
+			request.setAttribute("status", "emptyPassword");
+			dispatcher = request.getRequestDispatcher("login.jsp");		
+			dispatcher.forward(request,response);
+		}
+		
+		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay?useSSL=false","root","Ds180507.");
@@ -38,7 +51,7 @@ public class Login extends HttpServlet {
 			ResultSet result = prep.executeQuery();
 			if(result.next()) {
 				session.setAttribute("name", result.getString("email"));
-				dispatcher = request.getRequestDispatcher("index.jsp");
+				dispatcher = request.getRequestDispatcher("index-main.jsp");
 			}else {
 				request.setAttribute("status", "failed");
 				dispatcher = request.getRequestDispatcher("login.jsp");

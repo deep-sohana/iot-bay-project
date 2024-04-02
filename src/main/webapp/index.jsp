@@ -8,6 +8,7 @@
         String continueAsGuest = request.getParameter("continueAsGuest");
         if (continueAsGuest != null && continueAsGuest.equals("true")) {
             // Allow guest access
+        	response.sendRedirect("index-main.jsp");
         } else {
             // Redirect to login page if user is not logged in
             response.sendRedirect("login.jsp");

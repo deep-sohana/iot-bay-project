@@ -28,7 +28,7 @@ public class Login extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		
-//		if email of password is empty, do not forward request
+//		server-side validation
 		if(email == null || email.equals("")) {
 			request.setAttribute("status", "emptyEmail");
 			dispatcher = request.getRequestDispatcher("login.jsp");	

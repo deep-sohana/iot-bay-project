@@ -111,7 +111,10 @@
 	}
 	if(status == "passNoMatch"){
 		swal("Unsuccessful!","Passwords do not match.", "error");
-	}	
+	}
+	if(status == "invalidPassword"){
+		swal("Unsuccessful!","Password must be at least 8 characters long and contain at least one digit, one lowercase letter, one uppercase letter, one special character, and no whitespace.", "error");
+	}
 </script>
 
 

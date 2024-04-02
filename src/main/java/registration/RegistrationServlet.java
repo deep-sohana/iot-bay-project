@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class RegistraionServlet
  */
 @WebServlet("/register")
-public class RegistraionServlet extends HttpServlet {
+public class RegistrationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	
@@ -28,6 +28,34 @@ public class RegistraionServlet extends HttpServlet {
 		
 		Connection connect = null;
 		RequestDispatcher dispatcher = null;
+		
+//		server-side validation
+		if(fname == null || fname.equals("")) {
+			request.setAttribute("status", "emptyFname");
+			dispatcher = request.getRequestDispatcher("registration.jsp");	
+			dispatcher.forward(request,response);
+		}
+		else if(lname == null || lname.equals("")) {
+			request.setAttribute("status", "emptyLname");
+			dispatcher = request.getRequestDispatcher("registration.jsp");	
+			dispatcher.forward(request,response);
+		}
+		else if(email == null || email.equals("")) {
+			request.setAttribute("status", "emptyEmail");
+			dispatcher = request.getRequestDispatcher("registration.jsp");	
+			dispatcher.forward(request,response);
+		}
+		else if(phone == null || phone.equals("") || phone.length() != 10) {
+			request.setAttribute("status", "invalidPhone");
+			dispatcher = request.getRequestDispatcher("registration.jsp");	
+			dispatcher.forward(request,response);
+		}
+		else if(password == null || password.equals("")) {
+			request.setAttribute("status", "emptyPassword");
+			dispatcher = request.getRequestDispatcher("registration.jsp");	
+			dispatcher.forward(request,response);
+		}
+		
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");

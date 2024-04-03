@@ -37,9 +37,19 @@ IoTBay is an online retail management system designed to streamline the process 
 4. Finish
 
 ### Set-up MySQL Database:
-1. Download MySQL: [Download Here](https://dev.mysql.com/downloads/installer/) (mysql-installer-community-8.0.36.0.msi)
-2. **Steps to set-up MySQL to be confirmed**
-3. Open MySQL Workbench
+#### For Windows:
+1. Download MySQL: [Download Here](https://dev.mysql.com/downloads/installer/). (mysql-installer-community-8.0.36.0.msi)
+    - Select "Full" as Setup Type > Execute Installation > Next.
+    - Ensure Port is 3306 > Select Use Strong Password > Create MySQL Root Password > Next > Next > Execute > Finish
+    - Next > Finish > Next > Enter Password > Check > Next > Execute > Finish > Next > Finish.
+   
+#### For Mac:
+1. Download MySQL: [Download Here](https://dev.mysql.com/downloads/mysql/).
+    - Follow Installation Steps and Enter a password for "root" user.
+    - Download MySQL Workbench: [Download Here](https://dev.mysql.com/downloads/workbench/).
+    - Open System Prefences > Search "MySQL" > Select Start MySQL Server
+
+2. Open MySQL Workbench > Connect to Local instance > Input the following:
     ```sql
     create database iotbay;
     USE iotbay;

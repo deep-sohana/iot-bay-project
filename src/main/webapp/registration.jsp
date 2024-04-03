@@ -103,6 +103,9 @@
 	if(status == "emptyEmail"){
 		swal("Unsuccessful!","Please enter an email.", "error");
 	}
+	if(status == "emailExists"){
+		swal("Unsuccessful!","Email already exists.", "error");
+	}	
 	if(status == "invalidPhone"){
 		swal("Unsuccessful!","Please enter a valid phone number.", "error");
 	}

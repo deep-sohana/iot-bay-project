@@ -35,6 +35,7 @@ public class RegistrationServlet extends HttpServlet {
 		Pattern passwordPattern = Pattern.compile(regex);
 		Matcher pwdMatcher = passwordPattern.matcher(password);
 		
+		
 		Connection connect = null;
 		RequestDispatcher dispatcher = null;
 		
@@ -74,6 +75,11 @@ public class RegistrationServlet extends HttpServlet {
 			dispatcher = request.getRequestDispatcher("registration.jsp");	
 			dispatcher.forward(request,response);
 		}
+		else if (emailExists(email)) {
+            request.setAttribute("status", "emailExists");
+            dispatcher = request.getRequestDispatcher("registration.jsp");
+            dispatcher.forward(request, response);
+        }		
 		else {	
 			try {
 				Class.forName("com.mysql.cj.jdbc.Driver");
@@ -105,5 +111,50 @@ public class RegistrationServlet extends HttpServlet {
 			}
 		}
 	}
+	
+    // Method to check if the email already exists in the database
+    private boolean emailExists(String email) {
+        Connection connectEmail = null;
+        PreparedStatement prepEmail = null;
+        ResultSet resultSet = null;
+        boolean exists = false;
+        
+        try {
+            // Establish database connection
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connectEmail = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay?useSSL=false","root","Ds180507.");
+            
+            // Prepare and execute query to check if email exists
+            String query = "SELECT * FROM users WHERE email = ?";
+            prepEmail = connectEmail.prepareStatement(query);
+            prepEmail.setString(1, email);
+            resultSet = prepEmail.executeQuery();
+            
+            // If a row is returned, email exists
+            if (resultSet.next()) {
+                exists = true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // Close resources
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (prepEmail != null) {
+                	prepEmail.close();
+                }
+                if (connectEmail != null) {
+                	connectEmail.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        
+        return exists;
+    }
+
 
 }

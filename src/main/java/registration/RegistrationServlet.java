@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import java.util.regex.Pattern;
+import java.util.regex.*;
 
 /**
  * Servlet implementation class RegistraionServlet
@@ -29,7 +29,11 @@ public class RegistrationServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		String repass = request.getParameter("re_pass");
 		
-		String passwordPattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
+		// Password validation regex pattern
+		String regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@#$%^&+=.])(?=\\S+$).{8,20}$";
+
+		Pattern passwordPattern = Pattern.compile(regex);
+		Matcher pwdMatcher = passwordPattern.matcher(password);
 		
 		Connection connect = null;
 		RequestDispatcher dispatcher = null;
@@ -60,7 +64,7 @@ public class RegistrationServlet extends HttpServlet {
 			dispatcher = request.getRequestDispatcher("registration.jsp");	
 			dispatcher.forward(request,response);
 		}
-		else if(!Pattern.matches(passwordPattern, password)) {
+		else if(pwdMatcher.matches() == false) {
             request.setAttribute("status", "invalidPassword");
             dispatcher = request.getRequestDispatcher("registration.jsp");
             dispatcher.forward(request, response);			

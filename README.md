@@ -21,13 +21,6 @@ IoTBay is an online retail management system designed to streamline the process 
 - MySQL
 - Apache Tomcat v9.0
 
-## Usage:
-1. Clone the repository to your local machine.
-2. Import the project into your preferred IDE (e.g., Eclipse).
-3. Configure the database connection settings in the `RegistrationServlet` and other relevant files.
-4. Deploy the application to a Servlet container (e.g., Apache Tomcat).
-5. Access the application through a web browser.
-
 ## Steps:
 
 ### Set-Up Apache Tomcat:
@@ -65,8 +58,13 @@ IoTBay is an online retail management system designed to streamline the process 
 1. ```bash
    git clone https://github.com/deep-sohana/iot-bay-project
 2. Open in Eclipse
-3. Navigate to RegistrationServlet.java > Update Password XXXX in the below
+3. Navigate to RegistrationServlet.java > Update XXXX in the below with your MySQL password
 4. ```java :
    connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay?useSSL=false","root","XXXXXX.");
 5. Repeat above in Login.java
-6. Right-click iotbay-initial > Run on Server
+
+### Launch Web App:
+1. Right-click iotbay-initial > Run on Server
+
+## Contributing:
+Contributions to the project are welcome! Feel free to submit bug reports, feature requests, or pull requests.

@@ -16,6 +16,11 @@ IoTBay is an online retail management system designed to streamline the process 
 - **Database:** MySQL
 - **Development Tools:** Eclipse IDE, Apache Tomcat, Git
 
+## Prerequisites:
+- Eclipse IDE for Enterprise Java and Web Developers [Download Here](https://www.eclipse.org/downloads/packages/release/2024-03/r/eclipse-ide-enterprise-java-and-web-developers)
+- MySQL
+- Apache Tomcat v9.0
+
 ## Usage:
 1. Clone the repository to your local machine.
 2. Import the project into your preferred IDE (e.g., Eclipse).
@@ -23,8 +28,45 @@ IoTBay is an online retail management system designed to streamline the process 
 4. Deploy the application to a Servlet container (e.g., Apache Tomcat).
 5. Access the application through a web browser.
 
-## Contributing:
-Contributions to the project are welcome! Feel free to submit bug reports, feature requests, or pull requests.
+## Steps:
 
+### Set-Up Apache Tomcat:
+1. Download Apache Tomcat v9.0 and Extract: [Download Here](https://tomcat.apache.org/download-90.cgi) (64-bit Windows zip (pgp, sha512))
+2. Open Eclipse > Window > Show View > Servers > Create New Server
+3. Select Server Type: Tomcat v9.0 Server
+4. Add Server Runtime Environment > Browse and select installation directory where Tomcat was extracted.
+5. Finish and Start Server to verify
 
+### Create Dynamic Web Project:
+1. Open Eclipse > New > Dynamic Web Project
+2. Select Target Runtime as Apache Tomcat v9.0
+3. Next > Next > Generate web.xml deployment descriptor
+4. Finish
 
+### Set-up MySQL Database:
+1. Download MySQL: [Download Here](https://dev.mysql.com/downloads/installer/) (mysql-installer-community-8.0.36.0.msi)
+2. **Steps to set-up MySQL to be confirmed**
+3. Open MySQL Workbench
+    ```sql
+    create database iotbay;
+    USE iotbay;
+    CREATE TABLE users (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        firstName VARCHAR(50) NOT NULL,
+        lastName VARCHAR(50) NOT NULL,
+        email VARCHAR(100) NOT NULL UNIQUE,
+        upassword VARCHAR(100) NOT NULL,
+        phone VARCHAR(20),
+        userType ENUM('staff', 'customer') NOT NULL
+      );
+    ```
+
+### Clone Repo:
+1. ```bash
+   git clone https://github.com/deep-sohana/iot-bay-project
+2. Open in Eclipse
+3. Navigate to RegistrationServlet.java > Update Password XXXX in the below
+4. ```java :
+   connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay?useSSL=false","root","XXXXXX.");
+5. Repeat above in Login.java
+6. Right-click iotbay-initial > Run on Server

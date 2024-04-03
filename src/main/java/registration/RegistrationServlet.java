@@ -55,6 +55,11 @@ public class RegistrationServlet extends HttpServlet {
 			dispatcher = request.getRequestDispatcher("registration.jsp");	
 			dispatcher.forward(request,response);
 		}
+		else if (emailExists(email)) {
+            request.setAttribute("status", "emailExists");
+            dispatcher = request.getRequestDispatcher("registration.jsp");
+            dispatcher.forward(request, response);
+        }		
 		else if(phone == null || phone.equals("") || phone.length() != 10) {
 			request.setAttribute("status", "invalidPhone");
 			dispatcher = request.getRequestDispatcher("registration.jsp");	
@@ -74,12 +79,7 @@ public class RegistrationServlet extends HttpServlet {
 			request.setAttribute("status", "passNoMatch");
 			dispatcher = request.getRequestDispatcher("registration.jsp");	
 			dispatcher.forward(request,response);
-		}
-		else if (emailExists(email)) {
-            request.setAttribute("status", "emailExists");
-            dispatcher = request.getRequestDispatcher("registration.jsp");
-            dispatcher.forward(request, response);
-        }		
+		}		
 		else {	
 			try {
 				Class.forName("com.mysql.cj.jdbc.Driver");

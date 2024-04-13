@@ -43,4 +43,5 @@ public class Shipment implements Serializable{
     public Order getOrder() {
         return order;
     }
+    
 }

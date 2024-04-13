@@ -57,13 +57,6 @@
 								<input type="password" name="re_pass" id="re_pass"
 									placeholder="Repeat your password" required="required"/>
 							</div>
-							<div class="form-group">
-								<input type="checkbox" name="agree-term" id="agree-term"
-									class="agree-term" /> <!-- <label for="agree-term"
-									class="label-agree-term"><span><span></span></span>I
-									agree all statements in <a href="#" class="term-service">Terms
-										of service</a></label> -->
-							</div>
 							<div class="form-group form-button">
 								<input type="submit" name="signup" id="signup"
 									class="form-submit" value="Register" />
@@ -74,7 +67,7 @@
 						<figure>
 							<img src="images/signup-image.svg" alt="signup image">
 						</figure>
-						<a href="login.jsp" class="signup-image-link">I am already
+						<a href="index.jsp" class="signup-image-link">I am already
 							member</a>
 					</div>
 				</div>
@@ -90,14 +83,51 @@
 	<link rel="stylesheet" href="alert/dist/sweetalert.css"> <!-- message shown after sign up -->
 	
 <script type="text/javascript">
-	var status = document.getElementById("status").value;
+	var urlParams = new URLSearchParams(window.location.search);
+	var regSuccess = urlParams.get('regSuccess');
+	var regFailed = urlParams.get('regFailed');
+	var emailExists = urlParams.get('emailExists');
+	var invalidPhone = urlParams.get('invalidPhone');
+	var passNoMatch = urlParams.get('passNoMatch');
+	var invalidPassword = urlParams.get('invalidPassword');
+	
+	
+    if (regSuccess) {
+		swal("Congratulations!","Account successfully registered!", "success")
+        .then((value) => {
+            window.location.href = "index.jsp"; // Redirect to login page
+        });
+    }	
+    if (regFailed) {
+        swal("Unsuccessful!","Registration was unsuccessful, please try again.", "error");
+        history.replaceState({}, document.title, window.location.pathname);
+    }	
+    if (emailExists) {
+    	swal("Unsuccessful!","Email already exists.", "error");
+        history.replaceState({}, document.title, window.location.pathname);
+    }
+    if (invalidPhone) {
+        swal("Unsuccessful!","Registration was unsuccessful, please try again.", "error");
+        history.replaceState({}, document.title, window.location.pathname);
+    }
+    if (passNoMatch) {
+    	swal("Unsuccessful!","Passwords do not match.", "error");
+        history.replaceState({}, document.title, window.location.pathname);
+    }
+    if (invalidPassword) {
+    	swal("Unsuccessful!","Password must be at least 8 characters long and contain at least one digit, one lowercase letter, one uppercase letter, one special character, and no whitespace.", "error");
+        history.replaceState({}, document.title, window.location.pathname);
+    }
+
+	
+/* 	var status = document.getElementById("status").value;
 	if(status == "success"){
 		swal("Congratulations!","Account successfully registered!", "success")
         .then((value) => {
-            window.location.href = "login.jsp"; // Redirect to login page
+            window.location.href = "index.jsp"; // Redirect to login page
         });
-	}
-	if(status == "emptyFname"){
+	} */
+/* 	if(status == "emptyFname"){
 		swal("Unsuccessful!","Please enter a first name.", "error");
 	}
 	if(status == "emptyLname"){
@@ -120,7 +150,7 @@
 	}
 	if(status == "invalidPassword"){
 		swal("Unsuccessful!","Password must be at least 8 characters long and contain at least one digit, one lowercase letter, one uppercase letter, one special character, and no whitespace.", "error");
-	}
+	} */
 </script>
 
 

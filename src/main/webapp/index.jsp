@@ -30,7 +30,7 @@
 						</figure>
 						<a href="registration.jsp" class="signup-image-link">Create an
 							account</a>
-						<a href="index.jsp" class="signup-image-link">Continue as guest</a>
+						<a href="landing.jsp" class="signup-image-link">Continue as guest</a>
 					</div>
 
 					<div class="signin-form">
@@ -38,10 +38,12 @@
 						<form method="post" action="login" class="register-form"
 							id="login-form">
 							<div class="form-group">
-								<label for="username"><i
+<!-- 								<label for="username"><i
 									class="zmdi zmdi-account material-icons-name"></i></label> <input
 									type="text" name="email" id="email"
-									placeholder="Email" required="required"/>
+									placeholder="Email" required="required"/> -->
+									<label for="email"><i class="zmdi zmdi-account material-icons-name"></i></label> <input
+									type="email" name="email" id="email" placeholder="Email" required="required"/>
 							</div>
 							<div class="form-group">
 								<label for="password"><i class="zmdi zmdi-lock"></i></label> <input
@@ -84,8 +86,14 @@
 	<link rel="stylesheet" href="alert/dist/sweetalert.css"> <!-- message shown after sign up -->
 	
 <script type="text/javascript">
-	var status = document.getElementById("status").value;
-	if(status == "failed"){
+/* 	var status = document.getElementById("status").value; */
+    var urlParams = new URLSearchParams(window.location.search);
+    var loginFailed = urlParams.get('loginFailed');
+    if (loginFailed) {
+        swal("Unsuccessful!","Incorrect email or password, please try again.", "error");
+        history.replaceState({}, document.title, window.location.pathname);
+    }	
+/* 	if(status == "failed"){
 		swal("Unsuccessful!","Incorrect email or password, please try again.", "error");
 	}
 	else if(status == "emptyEmail"){
@@ -93,7 +101,7 @@
 	}
 	else if(status == "emptyPassword"){
 		swal("Unsuccessful!","Please enter password.", "error");
-	}
+	} */
 </script>
 
 </body>

@@ -1,17 +1,3 @@
-<%-- <%
-    if(session.getAttribute("name") == null){
-        String continueAsGuest = request.getParameter("continueAsGuest");
-        if (continueAsGuest != null && continueAsGuest.equals("true")) {
-            // Allow guest access
-        	response.sendRedirect("index.jsp");
-        } else {
-            // Redirect to login page if user is not logged in
-            response.sendRedirect("login.jsp");
-            return; // Stop further execution of the JSP
-        }
-    }
-%> --%>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,10 +25,10 @@
     <!--================= NAVBAR ======================-->
     <nav>
         <div class="container nav__container">
-            <h3><a href="index.jsp">IoTBay</a></h3>
+            <h3><a href="landing.jsp">IoTBay</a></h3>
             <ul class="nav__menu">
-                <li><a href="index.jsp">Home</a></li>
-                <li><a href="index.jsp">About</a></li>
+                <li><a href="landing.jsp">Home</a></li>
+                <li><a href="landing.jsp">About</a></li>
                 <li><a href="logout">Logout</a></li>
                 <li><small><%= session.getAttribute("name") != null ? session.getAttribute("name") : "Guest" %></small></li>
             </ul>
@@ -60,7 +46,7 @@
                 <p>
                     At IoTBay, we're dedicated to bringing the future to your finger tips. As a small yet dynamic company nestled in the heart of Sydney, Australia, we're passionate about revolutionizing the way you interact with the Internet of Things (IoT). Our mission is simple: to provide you with a seamless online platform where you can explore, discover, and purchase cutting-edge IoT devices. 
                 </p>
-                <a href="registration.jsp" class="btn btn-primary">Get Stared</a>
+                <a href="landing.jsp" class="btn btn-primary">Get Stared</a>
             </div>
 
             <div class="header__right">

@@ -107,7 +107,7 @@
         history.replaceState({}, document.title, window.location.pathname);
     }
     if (invalidPhone) {
-        swal("Unsuccessful!","Registration was unsuccessful, please try again.", "error");
+    	swal("Unsuccessful!","Please enter a valid phone number.", "error");
         history.replaceState({}, document.title, window.location.pathname);
     }
     if (passNoMatch) {

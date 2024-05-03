@@ -28,6 +28,7 @@
             <h3><a href="landing.jsp">IoTBay</a></h3>
             <ul class="nav__menu">
                 <li><a href="landing.jsp">Home</a></li>
+                <li><a href="catalogue.jsp">Products</a></li>
                 <li><a href="landing.jsp">About</a></li>
                 <li><a href="logout">Logout</a></li>
                 <li><small><%= session.getAttribute("name") != null ? session.getAttribute("name") : "Guest" %></small></li>

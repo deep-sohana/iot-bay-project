@@ -54,22 +54,24 @@ IoTBay is an online retail management system designed to streamline the process 
         email VARCHAR(100) NOT NULL UNIQUE,
         upassword VARCHAR(100) NOT NULL,
         phone VARCHAR(20),
-        userType ENUM('staff', 'customer') NOT NULL
-      );
+        userType ENUM('customer', 'staff') NOT NULL,
+        verificationCode VARCHAR(6) NOT NULL,
+        registrationDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
     ```
 
 ### Clone Repo:
 1. ```bash
-   git clone https://github.com/deep-sohana/iot-bay-project
+   git clone https://github.com/bhav-18/IoTBay.git
 2. Open in Eclipse
-3. Navigate to iotbay-initial > src > main > java > registration > RegistrationServlet.java
-4. Update 'XXXX' in the below with your MySQL password
+3. Navigate to src > main > java > registration > RegistrationServlet.java
+4. Update 'LocalHost1.' in the below with your MySQL password in line 86 and line 125
 5. ```java :
-   connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay?useSSL=false","root","XXXXXX.");
-6. Repeat above in Login.java
+   connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/iotbay?useSSL=false","root","LocalHost1.");
+6. Repeat above in all Servlet files where there is sql connection.
 
 ### Launch Web App:
-1. Right-click iotbay-initial > Run As > Run on Server
+1. Right-click on project > Run As > Run on Server
 
 ## Contributing:
 Contributions to the project are welcome! Feel free to submit bug reports, feature requests, or pull requests.

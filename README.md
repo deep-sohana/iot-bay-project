@@ -62,7 +62,7 @@ IoTBay is an online retail management system designed to streamline the process 
 
 ### Clone Repo:
 1. ```bash
-   git clone https://github.com/bhav-18/IoTBay.git
+   git clone https://github.com/deep-sohana/iot-bay-project
 2. Open in Eclipse
 3. Navigate to src > main > java > registration > RegistrationServlet.java
 4. Update 'LocalHost1.' in the below with your MySQL password in line 86 and line 125

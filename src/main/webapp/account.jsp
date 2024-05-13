@@ -31,7 +31,7 @@
 </head>
 <body>
 
-	<nav>
+<%-- 	<nav>
 	    <div class="container nav__container">
 	        <h3><a href="landing.jsp">IoTBay</a></h3>
 	        <ul class="nav__menu">
@@ -45,7 +45,7 @@
 	         <% } %>               	
 	        </ul>
 	    </div>
-	</nav>
+	</nav> --%>
 
 	<input type = "hidden" id ="status" value ="<%= request.getAttribute("status")%>"> <!-- get status value of sign up process-->
 
@@ -84,21 +84,18 @@
 									type="password" name="password" id="password" placeholder="Password" required="required" value="<%= currentUser.getPassword() %>"/>
 							</div>
 							<div class="form-group form-button" style="display: flex; justify-content: space-between">
-								<input type="submit" name="signup" id="signup"
+								<input type="submit" name="updateAccount" id="signup"
 									class="form-submit" value="Update details" style="margin-right: 10px" />	
-								<input type="button" name="deleteAccount" id="deleteAccount"
-									class="form-submit" value="Delete account" onclick="deleteAccount()" />															
+								<input type="submit" name="deleteAccount" id="deleteAccount"
+									class="form-submit" value="Delete account"/>															
 							</div>						
-						</form>
-						<form id="deleteForm" method="post" action="account">
-						    <input type="hidden" name="action" value="delete"> <!-- Include an action parameter to identify the action -->
-						    <input type="hidden" name="email" value="<%= currentUser.getEmail() %>">
-						</form>						
+						</form>					
 					</div>
-					<div class="signup-image" style="width:300px; margin-top:125px">
+					<div class="signup-image" style="width:300px; margin-top:120px">
 						<figure>
 							<img src="images/account.svg" alt="signup image">
-						</figure>						
+						</figure>	
+						<a href="landing.jsp" class="form-submit" style="margin-top: -3.5rem; text-decoration: none;">Return to home</a>											
 					</div>			    					
 				</div> 	
 				<div class="signup-content" style="margin-top: -4rem;">
@@ -151,8 +148,10 @@
 	var urlParams = new URLSearchParams(window.location.search);
 	var updateSuccess = urlParams.get('updateSuccess');
 	var updateFailed = urlParams.get('updateFailed');
-	var deleteSuccess = urlParams.get('deleteSuccess');
+ 	var deleteSuccess = urlParams.get('deleteSuccess');
 	var deleteFailed = urlParams.get('deleteFailed');
+	var invalidPhone = urlParams.get('invalidPhone');
+	var invalidPassword = urlParams.get('invalidPassword');
 
     if (updateSuccess) {
         swal("Success!","Your details have been updated!", "success");
@@ -171,11 +170,15 @@
     if(deleteFailed){
     	swal("Unsuccessful!","Unable to delete account.", "error");
         history.replaceState({}, document.title, window.location.pathname);    	
-    }
-    
-    function deleteAccount() {
-    	document.getElementById("deleteForm").submit();
     }   
+    if (invalidPhone) {
+    	swal("Unsuccessful!","Please enter a valid phone number.", "error");
+        history.replaceState({}, document.title, window.location.pathname);
+    }
+    if (invalidPassword) {
+    	swal("Unsuccessful!","Password must be at least 8 characters long and contain at least one digit, one lowercase letter, one uppercase letter, one special character, and no whitespace.", "error");
+        history.replaceState({}, document.title, window.location.pathname);
+    }
     
 /*     function searchLogs() {
         var input, filter, table, tbody, tr, td, i, txtValue;
